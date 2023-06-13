@@ -2,6 +2,8 @@
 
 3D model，AR
 
+![girl](images/demo.jpg)
+
 # 参考资料
 
 * 入门3d
