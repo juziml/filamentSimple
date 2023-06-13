@@ -1,8 +1,10 @@
-# 简介
+# Filament simple
 
-基于GPT API 接口实现的个人AI聊天应用
+3D model，AR
 
-* 文字模型: GPT-3.5-Turbo
-* 语音模型：whisper-1
+# 参考资料
 
-![demo](./images/demo.jpg)
+* 入门3d
+  模型加载：https://medium.com/@philiprideout/getting-started-with-filament-on-android-d10b16f0ec67
+
+* AR:https://github.com/SceneView/sceneform-android
