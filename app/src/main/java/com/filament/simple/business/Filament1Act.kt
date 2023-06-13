@@ -23,7 +23,9 @@ class Filament1Act : Activity() {
         modelViewer = ModelViewer(surfaceView)
         surfaceView.setOnTouchListener(modelViewer)
 //        loadGlb("DamagedHelmet")
-        loadGltf("BusterDrone")
+        loadGlb("PeasantGirl")
+//        loadGltf("BusterDrone")
+//        loadGltf("RumbaDancing")
 
 
         //---
