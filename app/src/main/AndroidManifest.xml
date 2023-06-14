@@ -60,7 +60,11 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
+    <uses-feature
+        android:name="android.hardware.camera.ar"
+        android:required="true" />
     <queries>
         <!-- 企业微信-->
         <package android:name="com.tencent.wework" />
@@ -92,8 +96,9 @@
         android:theme="@style/UITheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory,android:allowBackup">
+        <!--        Filament1Act-->
         <activity
-            android:name="com.filament.simple.business.Filament1Act"
+            android:name="com.filament.simple.business.ARAct"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:exported="true"
             android:hardwareAccelerated="true"
@@ -106,6 +111,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--        <activity android:name=".business.ARAct"/>-->
+        <meta-data
+            android:name="com.google.ar.core"
+            android:value="required" />
 
     </application>
 
