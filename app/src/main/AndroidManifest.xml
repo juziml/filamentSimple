@@ -97,8 +97,9 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory,android:allowBackup">
         <!--        Filament1Act-->
+        <!--        View3DModelsAct-->
         <activity
-            android:name="com.filament.simple.business.View3DModelsAct"
+            android:name="com.filament.simple.business.ARAct"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:exported="true"
             android:hardwareAccelerated="true"

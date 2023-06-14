@@ -12,3 +12,4 @@
 * 模型预览 simple:https://github.com/Sergiioh/android-model-viewer
 
 * AR:https://github.com/SceneView/sceneform-android
+  * need google service to connect AR session!

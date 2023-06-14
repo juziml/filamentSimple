@@ -216,7 +216,7 @@ dependencies {
     api Dependencies.Foundation.activityFragment
     api Dependencies.Foundation.net
 
-    implementation("com.gorisse.thomas.sceneform:sceneform:1.18.3")
+    implementation("com.gorisse.thomas.sceneform:sceneform:1.21.0")
 
     implementation("com.google.android.filament:filament-android:1.9.9")
     implementation("com.google.android.filament:filament-utils-android:1.9.4")

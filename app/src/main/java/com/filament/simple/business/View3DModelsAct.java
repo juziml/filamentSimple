@@ -24,7 +24,7 @@ public class View3DModelsAct extends Base3DActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.act_ar);
+        setContentView(R.layout.act_view_3d);
 
         backgroundSceneView = findViewById(R.id.backgroundSceneView);
 

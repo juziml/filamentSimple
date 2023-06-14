@@ -56,14 +56,14 @@ class Filament1Act : Base3DActivity() {
     private fun loadEnvironment(ibl: String) {
         // Create the indirect light source and add it to the scene.
         var buffer = readAsset("envs/$ibl/${ibl}_ibl.ktx")
-        KtxLoader.createIndirectLight(modelViewer.engine, buffer).apply {
+        KTXLoader.createIndirectLight(modelViewer.engine, buffer).apply {
             intensity = 50_000f
             modelViewer.scene.indirectLight = this
         }
 
         // Create the sky box and add it to the scene.
         buffer = readAsset("envs/$ibl/${ibl}_skybox.ktx")
-        KtxLoader.createSkybox(modelViewer.engine, buffer).apply {
+        KTXLoader.createSkybox(modelViewer.engine, buffer).apply {
             modelViewer.scene.skybox = this
         }
     }
