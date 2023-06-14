@@ -4,9 +4,8 @@ package com.filament.simple.business;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.filament.simple.R;
+import com.filament.simple.core.base.component.Base3DActivity;
 import com.google.ar.sceneform.Node;
 import com.google.ar.sceneform.SceneView;
 import com.google.ar.sceneform.math.Quaternion;
@@ -16,7 +15,7 @@ import com.google.ar.sceneform.rendering.ModelRenderable;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-public class ARAct extends AppCompatActivity {
+public class View3DModelsAct extends Base3DActivity {
 
     private SceneView backgroundSceneView;
     private SceneView transparentSceneView;

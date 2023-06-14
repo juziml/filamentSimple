@@ -4,13 +4,16 @@ package com.filament.simple.business
 import android.app.Activity
 import android.os.Bundle
 import android.view.*
+import com.filament.simple.core.base.component.Base3DActivity
 import com.google.android.filament.Skybox
 import com.google.android.filament.utils.*
 import java.nio.ByteBuffer
 
-class Filament1Act : Activity() {
+class Filament1Act : Base3DActivity() {
     companion object {
-        init { Utils.init() }
+        init {
+            Utils.init()
+        }
     }
 
     private lateinit var surfaceView: SurfaceView

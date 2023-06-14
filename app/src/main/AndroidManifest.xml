@@ -98,7 +98,7 @@
         tools:replace="android:appComponentFactory,android:allowBackup">
         <!--        Filament1Act-->
         <activity
-            android:name="com.filament.simple.business.ARAct"
+            android:name="com.filament.simple.business.View3DModelsAct"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:exported="true"
             android:hardwareAccelerated="true"
