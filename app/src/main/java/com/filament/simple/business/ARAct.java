@@ -30,7 +30,10 @@ import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.BaseArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.ref.WeakReference;
+import java.util.concurrent.Callable;
 
 // need google service AR session!
 public class ARAct extends AppCompatActivity implements
@@ -50,15 +53,17 @@ public class ARAct extends AppCompatActivity implements
         setContentView(R.layout.act_ar_java);
         getSupportFragmentManager().addFragmentOnAttachListener(this);
 
-        if (savedInstanceState == null) {
-            if (Sceneform.isSupported(this)) {
-                getSupportFragmentManager().beginTransaction()
-                        .add(R.id.arFragment, ArFragment.class, null)
-                        .commit();
-            }
+        if (Sceneform.isSupported(this)) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.arFragment, ArFragment.class, null)
+                    .commit();
         }
-
-        loadModels();
+        getWindow().getDecorView().post(new Runnable() {
+            @Override
+            public void run() {
+                loadModels();
+            }
+        });
     }
 
     @Override
@@ -86,11 +91,24 @@ public class ARAct extends AppCompatActivity implements
         arSceneView.setFrameRateFactor(SceneView.FrameRate.FULL);
     }
 
+    private InputStream readModel() {
+        InputStream is;
+        try {
+            is = getAssets().open("models/ar_model.glb");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return is;
+    }
+
     public void loadModels() {
+        InputStream is = readModel();
+        if (is == null) throw new NullPointerException("InputStream is null");
         WeakReference<ARAct> weakActivity = new WeakReference<>(this);
         ModelRenderable.builder()
-                .setSource(this, Uri.parse("https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb"))
+//                .setSource(this, Uri.parse("https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb"))
                 .setIsFilamentGltf(true)
+                .setSource(this, () -> is)
                 .setAsyncLoadEnabled(true)
                 .build()
                 .thenAccept(model -> {

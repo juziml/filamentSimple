@@ -1,9 +1,11 @@
-
 package com.filament.simple.business
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import android.widget.Button
+import android.widget.FrameLayout
 import com.filament.simple.core.base.component.Base3DActivity
 import com.google.android.filament.Skybox
 import com.google.android.filament.utils.*
@@ -26,14 +28,29 @@ class Filament1Act : Base3DActivity() {
         modelViewer = ModelViewer(surfaceView)
         surfaceView.setOnTouchListener(modelViewer)
 //        loadGlb("DamagedHelmet")
-        loadGlb("PeasantGirl")
-//        loadGltf("BusterDrone")
+//        loadGlb("PeasantGirl")
 //        loadGltf("RumbaDancing")
-
+//        loadGltf("BusterDrone")
+//        loadGlb("cube")
+        loadGlb("ar_model")
+//        loadGlb("halloween")
 
         //---
         loadEnvironment("venetian_crossroads_2k")
         modelViewer.scene.skybox = Skybox.Builder().build(modelViewer.engine)
+        window?.decorView?.findViewById<FrameLayout>(android.R.id.content)
+            ?.addView(Button(this).apply {
+                layoutParams = FrameLayout.LayoutParams(200, 200)
+                text = "open on AR"
+                setOnClickListener {
+                    startActivity(
+                        Intent(
+                            this@Filament1Act,
+                            ARAct::class.java
+                        )
+                    )
+                }
+            })
     }
 
     private fun loadGltf(name: String) {
@@ -41,6 +58,7 @@ class Filament1Act : Base3DActivity() {
         modelViewer.loadModelGltf(buffer) { uri -> readAsset("models/$uri") }
         modelViewer.transformToUnitCube()
     }
+
     private fun loadGlb(name: String) {
         val buffer = readAsset("models/${name}.glb")
         modelViewer.loadModelGlb(buffer)
@@ -53,6 +71,7 @@ class Filament1Act : Base3DActivity() {
         input.read(bytes)
         return ByteBuffer.wrap(bytes)
     }
+
     private fun loadEnvironment(ibl: String) {
         // Create the indirect light source and add it to the scene.
         var buffer = readAsset("envs/$ibl/${ibl}_ibl.ktx")
